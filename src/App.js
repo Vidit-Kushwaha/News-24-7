@@ -1,25 +1,46 @@
-import logo from './logo.svg';
 import './App.css';
+import {
+  BrowserRouter as Router,
+  Switch,
+  Route
+} from "react-router-dom";
+import React, { Component } from 'react'
+import NavBar from './components/NavBar';
+import News from './components/News';
+import LoadingBar from 'react-top-loading-bar'
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+export default class App extends Component {
+  pageSize=6;
+ state={
+  progress:0
+ }
+ setprogress=(progress)=>{
+  this.setState({progress: progress})
+ }
+  render() {
+    return (
+      <div>
+         <Router>
+         <LoadingBar
+         height={2}
+        color='#f11946'
+        progress={this.state.progress}
+        />
+        <NavBar/>
+        <Switch>
+        <Route exact path="/technology"><News setprogress={this.setprogress} pageSize={this.pageSize} key="technology" category='technology'/></Route>
+          <Route exact path="/business"><News setprogress={this.setprogress} pageSize={this.pageSize} key="business" category='business'/></Route>
+          <Route exact path="/entertainment"><News setprogress={this.setprogress} pageSize={this.pageSize} key="entertainment" category='entertainment'/></Route>
+          <Route exact path="/health"><News setprogress={this.setprogress} pageSize={this.pageSize} key="health" category='health'/></Route>
+          <Route exact path="/science"><News setprogress={this.setprogress} pageSize={this.pageSize} key="science" category='science'/></Route>
+          <Route exact path="/sports"><News setprogress={this.setprogress} pageSize={this.pageSize} key="sports" category='sports'/></Route>
+          <Route exactpath="/general"><News setprogress={this.setprogress} pageSize={this.pageSize} key="general"  category='general'/></Route>
+          
+        </Switch>  
+        </Router>
+      </div>
+    )
+  }
 }
 
-export default App;
+// 55880454a1a346a9986dc6c80368ebbd
