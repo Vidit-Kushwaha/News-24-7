@@ -11,7 +11,7 @@ export class NewsItem extends Component {
               {source}
             </span>
             </div>
-                <img src={urlToImage?urlToImage:"https://cdn.pixabay.com/photo/2021/09/15/12/52/animal-6626792__340.jpg"} className="card-img-top" alt="..."/>
+                <img src={urlToImage?urlToImage:"https://cdn.pixabay.com/photo/2021/09/15/12/52/animal-6626792__340.jpg"} className="card-img-top" style={{aspectRatio:"3/2", backgroundSize:"cover"}} alt="..."/>
                     <div className="card-body">
                         <h5 className="card-title">{title}...</h5>
                         <p className="card-text">{description?description:"Description is not available"}...</p>

@@ -19,7 +19,7 @@ export class News extends Component {
     }
     async componentDidMount(){
       this.props.setprogress(0);
-      const url=`https://newsapi.org/v2/top-headlines?country=us&category=${this.props.category}&apiKey=55880454a1a346a9986dc6c80368ebbd&page=${this.state.page}&pageSize=${this.props.pageSize}`;
+      const url=`https://newsapi.org/v2/top-headlines?country=us&category=${this.props.category}&apiKey=${this.props.api}&page=${this.state.page}&pageSize=${this.props.pageSize}`;
       this.setState({loading:true})
       let data=await fetch(url);
       let parsedData=await data.json();
@@ -42,7 +42,7 @@ export class News extends Component {
   //   }
     
   fetchMoreData = async() => {
-    const url=`https://newsapi.org/v2/top-headlines?country=us&category=${this.props.category}&apiKey=55880454a1a346a9986dc6c80368ebbd&page=${this.state.page+1}&pageSize=${this.props.pageSize}`;
+    const url=`https://newsapi.org/v2/top-headlines?country=us&category=${this.props.category}&apiKey=${this.props.api}&page=${this.state.page+1}&pageSize=${this.props.pageSize}`;
       let data=await fetch(url);
       let parsedData=await data.json();
       this.setState({
@@ -56,7 +56,7 @@ export class News extends Component {
   
     return (
       <>
-        <h2 className="text-center">Headlines</h2>
+        <h2 className="text-center" style={{marginTop:"70px"}}>Headlines</h2>
         {this.state.loading && <Spinner />}
 
         <InfiniteScroll
